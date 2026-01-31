@@ -1,0 +1,399 @@
+import React, { useState } from 'react';
+import { 
+  AlertTriangle, 
+  MousePointer2, 
+  CheckCircle2, 
+  Info, 
+  ChevronLeft, 
+  ChevronRight,
+  GraduationCap, 
+  Save,
+  FileText,
+  ClipboardCheck,
+  UserCheck,
+  BookOpen,
+  PlusCircle,
+  ArrowUpDown,
+  MapPin,
+  Languages,
+  XCircle,
+  Lightbulb,
+  AlertOctagon
+} from 'lucide-react';
+
+const App = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+
+  // Brand Color: #c21139
+  const steps = [
+    { id: 1, title: "تقديم الطلب", icon: <MousePointer2 className="w-5 h-5" /> },
+    { id: 2, title: "شروط التقديم", icon: <ClipboardCheck className="w-5 h-5" /> },
+    { id: 3, title: "اختيار التخصصات", icon: <BookOpen className="w-5 h-5" /> },
+    { id: 4, title: "نصائح استراتيجية", icon: <Lightbulb className="w-5 h-5" /> }
+  ];
+
+  // --- Step 1: Submission Start ---
+  const renderStep1 = () => (
+    <div className="space-y-8 animate-in fade-in duration-500">
+      {/* Header Added for Consistency */}
+      <div className="bg-[#c21139] text-white p-6 rounded-3xl shadow-lg flex items-center justify-between relative overflow-hidden">
+         <div className="relative z-10">
+            <h2 className="text-3xl font-bold mb-2">المرحلة الأولى: تقديم الطلب</h2>
+            <p className="opacity-90 text-sm">خطوات البدء واختيار البرنامج المناسب</p>
+         </div>
+         <MousePointer2 className="w-16 h-16 opacity-10 absolute -left-4 -bottom-4 rotate-12" />
+      </div>
+
+      {/* Alert Section */}
+      <div className="bg-[#c21139]/5 border-r-4 border-[#c21139] p-6 rounded-2xl shadow-sm">
+         <h2 className="text-lg font-black text-[#c21139] mb-4 flex items-center gap-2">
+           <AlertTriangle className="w-6 h-6" />
+           ملاحظات هامة جداً (قبل البدء)
+         </h2>
+         <ul className="space-y-3 text-slate-700 font-medium text-sm leading-relaxed list-disc list-inside">
+           <li>إذا لم تقم بتعبئة المعلومات الإجبارية، <span className="font-bold text-[#c21139]">فلن تظهر لك أي برامج</span>. راجع معلوماتك أولاً.</li>
+           <li>عند البدء في الطلب، <span className="font-bold text-[#c21139]">لن يمكنك تعديل بياناتك الشخصية</span>. تأكد منها الآن.</li>
+           <li>للتعديل لاحقاً، ستضطر إلى <span className="underline decoration-[#c21139]">مسح الطلب بالكامل</span> والبدء مجدداً.</li>
+         </ul>
+      </div>
+
+      <section className="space-y-8">
+        {/* Step 1 Card - Wide Layout for Image */}
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden flex flex-col lg:flex-row">
+          {/* Text Side */}
+          <div className="p-8 lg:w-1/3 flex flex-col gap-4 border-b lg:border-b-0 lg:border-l border-slate-100">
+            <div className="w-10 h-10 rounded-full bg-[#c21139] text-white flex items-center justify-center font-bold text-lg shadow-md shadow-[#c21139]/20">1</div>
+            <h4 className="font-bold text-xl text-slate-900">اختيار البرنامج</h4>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              من تبويب "الصفحة الرئيسية"، ستظهر لك الخيارات. حدد المرحلة (بكالوريوس، ماجستير، دكتوراه، بحوث).
+            </p>
+            <div className="mt-auto">
+               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#c21139]/10 text-[#c21139] rounded-xl font-bold text-sm">
+                  <MousePointer2 className="w-4 h-4" />
+                  اضغط "تقديم طلب"
+               </div>
+            </div>
+          </div>
+          {/* Image Placeholder Side */}
+          <div className="lg:w-2/3 bg-slate-50 min-h-[300px] flex items-center justify-center p-8 border-r border-slate-100 relative">
+             <div className="border-2 border-dashed border-slate-300 rounded-2xl w-full h-full flex flex-col items-center justify-center text-slate-400 gap-2 min-h-[250px]">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                   <div className="text-xs font-bold text-slate-300">IMG</div>
+                </div>
+                <span className="text-sm font-medium">مساحة مخصصة لصورة: اختيار البرنامج</span>
+             </div>
+          </div>
+        </div>
+
+        {/* Step 2 Card - Wide Layout for Image */}
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden flex flex-col lg:flex-row">
+          {/* Text Side */}
+          <div className="p-8 lg:w-1/3 flex flex-col gap-4 border-b lg:border-b-0 lg:border-l border-slate-100">
+            <div className="w-10 h-10 rounded-full bg-[#c21139] text-white flex items-center justify-center font-bold text-lg shadow-md shadow-[#c21139]/20">2</div>
+            <h4 className="font-bold text-xl text-slate-900">تحديد الحالة الحالية</h4>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              ستظهر نافذة منبثقة. اختر حالتك بدقة (مثال: "بدأت التدريب على مستوى أعلى").
+            </p>
+            <div className="mt-auto">
+               <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-xl font-bold text-sm border border-green-100">
+                  <Save className="w-4 h-4" />
+                  اضغط زر "حفظ"
+               </div>
+            </div>
+          </div>
+          {/* Image Placeholder Side */}
+          <div className="lg:w-2/3 bg-slate-50 min-h-[300px] flex items-center justify-center p-8 border-r border-slate-100 relative">
+             <div className="border-2 border-dashed border-slate-300 rounded-2xl w-full h-full flex flex-col items-center justify-center text-slate-400 gap-2 min-h-[250px]">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                   <div className="text-xs font-bold text-slate-300">IMG</div>
+                </div>
+                <span className="text-sm font-medium">مساحة مخصصة لصورة: القائمة المنسدلة للحالة</span>
+             </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  // --- Step 2: Conditions ---
+  const renderStep2 = () => (
+    <div className="space-y-8 animate-in slide-in-from-left duration-500">
+      <div className="bg-[#c21139] text-white p-6 rounded-3xl shadow-lg flex items-center justify-between relative overflow-hidden">
+         <div className="relative z-10">
+            <h2 className="text-3xl font-bold mb-2">المرحلة الثانية: شروط التقديم</h2>
+            <p className="opacity-90 text-sm">مراجعة الشروط والموافقة عليها</p>
+         </div>
+         <ClipboardCheck className="w-16 h-16 opacity-10 absolute -left-4 -bottom-4 rotate-12" />
+      </div>
+
+      <div className="space-y-8">
+        {/* Condition 1 */}
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+           <div className="p-6 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-[#c21139] text-white flex items-center justify-center font-bold">3</div>
+                <h3 className="font-bold text-lg text-slate-800">نافذة الشروط الأولية</h3>
+              </div>
+              <div className="px-3 py-1 bg-[#c21139]/10 text-[#c21139] text-xs font-bold rounded-full">رسالة تنبيه</div>
+           </div>
+           <div className="p-8 flex flex-col lg:flex-row gap-8">
+              <div className="lg:w-1/3 space-y-4">
+                 <p className="text-slate-600 text-sm leading-relaxed">
+                   بعد الحفظ، ستظهر رسالة تنبيه تحتوي على شروط عامة.
+                 </p>
+                 <div className="flex items-center gap-2 font-bold text-slate-900">
+                    <MousePointer2 className="w-5 h-5 text-[#c21139]" />
+                    المطلوب: اضغط "أقبل وأوافق"
+                 </div>
+              </div>
+              <div className="lg:w-2/3 min-h-[250px] border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400">
+                 مساحة صورة: نافذة الشروط الأولية
+              </div>
+           </div>
+        </div>
+
+        {/* Condition 2 */}
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+           <div className="p-6 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-[#c21139] text-white flex items-center justify-center font-bold">4</div>
+                <h3 className="font-bold text-lg text-slate-800">الشروط النهائية والإقرار</h3>
+              </div>
+              <div className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">خطوة إلزامية</div>
+           </div>
+           <div className="p-8 flex flex-col lg:flex-row gap-8">
+              <div className="lg:w-1/3 space-y-4">
+                 <p className="text-slate-600 text-sm leading-relaxed">
+                   ستظهر لك صفحة الشروط كاملة. في أسفل الصفحة:
+                 </p>
+                 <ul className="space-y-2 text-sm">
+                   <li className="flex gap-2">
+                     <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+                     <span>ضع إشارة (✓) عند: "قرأت كل الشروط وأوافق عليها".</span>
+                   </li>
+                   <li className="flex gap-2">
+                     <Save className="w-5 h-5 text-[#c21139] shrink-0" />
+                     <span>اضغط على زر "حفظ".</span>
+                   </li>
+                 </ul>
+              </div>
+              <div className="lg:w-2/3 min-h-[250px] border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400">
+                 مساحة صورة: صفحة الشروط وخانة الاختيار
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // --- Step 3: Majors Selection ---
+  const renderStep3 = () => (
+    <div className="space-y-8 animate-in slide-in-from-left duration-500">
+      <div className="bg-[#c21139] text-white p-6 rounded-3xl shadow-lg flex items-center justify-between relative overflow-hidden">
+         <div className="relative z-10">
+            <h2 className="text-3xl font-bold mb-2">المرحلة الثالثة: اختيار التخصصات</h2>
+            <p className="opacity-90 text-sm">إضافة الرغبات وترتيب الأولويات</p>
+         </div>
+         <BookOpen className="w-16 h-16 opacity-10 absolute -left-4 -bottom-4 rotate-12" />
+      </div>
+
+      <div className="grid grid-cols-1 gap-8">
+         {/* Add Majors Large Section */}
+         <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+            <div className="p-6 border-b border-slate-100 bg-slate-50 flex items-center gap-3">
+               <div className="p-2 bg-[#c21139]/10 rounded-lg text-[#c21139]"><PlusCircle className="w-6 h-6" /></div>
+               <h3 className="text-xl font-bold text-slate-900">1. إضافة تخصص جديد</h3>
+            </div>
+            
+            <div className="p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+               <div className="space-y-4 order-2 lg:order-1">
+                  <h4 className="font-bold text-slate-800">خطوات الإضافة:</h4>
+                  <ul className="space-y-3 text-sm text-slate-600 list-disc list-inside leading-loose">
+                    <li>اضغط زر <span className="font-bold text-[#c21139] bg-[#c21139]/5 px-2 rounded">"إضافة"</span> لفتح القائمة.</li>
+                    <li>اختر التخصص لرؤية تفاصيله (الجامعة، اللغة، المدينة).</li>
+                    <li>اضغط على <span className="font-bold">الدائرة (+)</span> يمين التخصص لإضافته.</li>
+                    <li>اضغط زر <span className="font-bold">"حفظ"</span> أسفل القائمة.</li>
+                    <li>كرر العملية لإضافة رغبات أخرى.</li>
+                  </ul>
+               </div>
+               <div className="order-1 lg:order-2 min-h-[300px] border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400">
+                   مساحة صورة: قائمة التخصصات وزر الإضافة
+               </div>
+            </div>
+         </div>
+
+         {/* Reorder Large Section */}
+         <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+            <div className="p-6 border-b border-slate-100 bg-slate-50 flex items-center gap-3">
+               <div className="p-2 bg-blue-50 rounded-lg text-blue-600"><ArrowUpDown className="w-6 h-6" /></div>
+               <h3 className="text-xl font-bold text-slate-900">2. ترتيب الأولويات</h3>
+            </div>
+            
+            <div className="p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+               <div className="space-y-4 order-2 lg:order-1">
+                  <h4 className="font-bold text-slate-800">كيف ترتب رغباتك؟</h4>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    ستظهر لك القائمة بالتخصصات التي اخترتها. الترتيب مهم جداً لأن المنحة تنظر للرغبة الأولى ثم الثانية وهكذا.
+                  </p>
+                  <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 text-sm text-blue-800">
+                    <Info className="w-4 h-4 inline-block ml-2 mb-1" />
+                    اضغط على أي رغبة واسحبها للأعلى أو الأسفل، أو استخدم الأسهم الجانبية لتغيير ترتيبها حسب أولويتك.
+                  </div>
+               </div>
+               <div className="order-1 lg:order-2 min-h-[300px] border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400">
+                   مساحة صورة: قائمة الرغبات المرتبة
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  );
+
+  // --- Step 4: Strategic Tips (New Page) ---
+  const renderStep4 = () => (
+    <div className="space-y-8 animate-in slide-in-from-left duration-500">
+       <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-2xl flex items-center justify-between relative overflow-hidden">
+         <div className="relative z-10">
+            <h2 className="text-3xl font-black mb-2 text-[#c21139]">نصائح استراتيجية للقبول</h2>
+            <p className="text-slate-300 text-sm">كيف ترفع فرصك وتتجنب أخطاء الرفض الشائعة</p>
+         </div>
+         <AlertOctagon className="w-24 h-24 text-[#c21139] opacity-20 absolute -left-6 -bottom-6" />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Tip 1 */}
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+             <div className="w-12 h-12 bg-[#c21139]/10 text-[#c21139] rounded-2xl flex items-center justify-center mb-4">
+               <GraduationCap className="w-6 h-6" />
+             </div>
+             <h3 className="text-lg font-bold text-slate-900 mb-2">1. العدد واللغة</h3>
+             <ul className="space-y-2 text-sm text-slate-600 list-disc list-inside">
+               <li>اختر <strong>12 جامعة</strong> كاملة لزيادة الفرص.</li>
+               <li>تجنب الجامعات التي تطلب <span className="text-red-600 font-bold">TOEFL/GRE</span> إذا لم تكن تملك الشهادة (انتبه لعلامة <span className="bg-red-100 text-red-600 px-1 rounded text-xs">!</span>).</li>
+             </ul>
+          </div>
+
+          {/* Tip 2 */}
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+             <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-4">
+               <MapPin className="w-6 h-6" />
+             </div>
+             <h3 className="text-lg font-bold text-slate-900 mb-2">2. التوزيع الجغرافي</h3>
+             <p className="text-sm text-slate-600 leading-relaxed">
+               قلل من اختيار المدن الكبرى (<span className="font-bold">إسطنبول، أنقرة، إزمير</span>). اجعلها أقل من نصف قائمة رغباتك لأن المنافسة فيها شرسة.
+             </p>
+          </div>
+
+          {/* Tip 3 */}
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+             <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
+                  <BookOpen className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">3. التناسق وعدم التشتت</h3>
+             </div>
+             <p className="text-sm text-slate-600">
+               ركز على تخصصات متقاربة (رغبتين أو ثلاث بحد أقصى) ووزعها على جامعات مختلفة. التشتت بين تخصصات لا علاقة لها ببعضها يضعف ملفك.
+             </p>
+          </div>
+      </div>
+
+      {/* Critical Warning Section */}
+      <div className="bg-red-50 p-8 rounded-3xl border-2 border-red-100 flex flex-col md:flex-row gap-8 items-center">
+         <div className="flex-1 space-y-4">
+            <div className="flex items-center gap-3">
+               <XCircle className="text-[#c21139] w-8 h-8" />
+               <h3 className="text-2xl font-black text-[#c21139]">تحذير هام جداً</h3>
+            </div>
+            <p className="font-bold text-slate-800">
+               لا تفعل خيار: "أوافق على دخول ما تراه إدارتكم مناسباً..."
+            </p>
+            <p className="text-sm text-slate-600 leading-relaxed">
+               تفعيل هذا الخيار يعطي انطباعاً بأنك <strong>متردد ولست صاحب هدف محدد</strong>، مما قد يؤدي لرفضك. اتركه فارغاً تماماً.
+            </p>
+         </div>
+         <div className="md:w-1/3 w-full bg-white p-4 rounded-xl border border-slate-200 opacity-70 grayscale">
+            <div className="flex items-center gap-3 select-none">
+               <div className="w-6 h-6 border-2 border-slate-300 rounded bg-white"></div>
+               <div className="space-y-2 flex-1">
+                 <div className="h-2 bg-slate-200 rounded w-full"></div>
+                 <div className="h-2 bg-slate-200 rounded w-2/3"></div>
+               </div>
+            </div>
+            <div className="mt-2 text-center text-xs font-bold text-red-500">❌ لا تضغط هنا</div>
+         </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800 dir-rtl" dir="rtl">
+      <div className="max-w-5xl mx-auto space-y-8">
+        
+        {/* Navigation Header */}
+        <nav className="sticky top-4 z-50 flex flex-col md:flex-row justify-between items-center gap-6 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100">
+          <div className="flex items-center gap-3 px-2">
+            <div className="bg-[#c21139] p-2.5 rounded-xl text-white shadow-lg shadow-[#c21139]/30">
+              <GraduationCap className="w-6 h-6" />
+            </div>
+            <h1 className="font-black text-xl tracking-tight text-slate-900 hidden lg:block">دليل المنحة <span className="text-[#c21139]">2024</span></h1>
+          </div>
+          
+          <div className="flex bg-slate-100/50 p-1.5 rounded-xl overflow-x-auto max-w-full no-scrollbar gap-1">
+            {steps.map(step => (
+              <button
+                key={step.id}
+                onClick={() => setCurrentStep(step.id)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
+                  currentStep === step.id 
+                  ? "bg-white text-[#c21139] shadow-md ring-1 ring-slate-100" 
+                  : "text-slate-500 hover:text-slate-700 hover:bg-white/50"
+                }`}
+              >
+                {step.icon}
+                <span className="hidden md:inline">{step.title}</span>
+                <span className="md:hidden">{step.id}</span>
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        {/* Content Render */}
+        <main className="min-h-[600px] pb-32">
+          {currentStep === 1 && renderStep1()}
+          {currentStep === 2 && renderStep2()}
+          {currentStep === 3 && renderStep3()}
+          {currentStep === 4 && renderStep4()}
+        </main>
+
+        {/* Floating Footer Navigation */}
+        <footer className="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-[#1a1a1a]/90 backdrop-blur-xl px-8 py-4 rounded-full shadow-2xl border border-white/10 z-50 text-white w-[90%] md:w-auto justify-between md:justify-center">
+          <button 
+            disabled={currentStep === 1}
+            onClick={() => setCurrentStep(prev => prev - 1)}
+            className="flex items-center gap-2 hover:text-[#c21139] disabled:opacity-30 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5" />
+            <span className="text-sm font-bold">السابق</span>
+          </button>
+          
+          <div className="text-sm font-mono text-slate-400 bg-white/10 px-3 py-1 rounded-full">
+            {currentStep} / {steps.length}
+          </div>
+
+          <button 
+            disabled={currentStep === steps.length}
+            onClick={() => setCurrentStep(prev => prev + 1)}
+            className="flex items-center gap-2 hover:text-[#c21139] disabled:opacity-30 transition-colors"
+          >
+            <span className="text-sm font-bold">التالي</span>
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+        </footer>
+
+      </div>
+    </div>
+  );
+};
+
+export default App;
